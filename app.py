@@ -50,8 +50,8 @@ def upload_files():
 
         xlsx_file_path = ExcelConverter.convert(data, filename)
 
-        response = send_from_directory("xlsx", xlsx_file_path)
+        response = send_from_directory("uploads", xlsx_file_path)
         # print("file sent, deleting...")
-        os.remove(os.path.join("xlsx", xlsx_file_path))
+        os.remove(os.path.join("uploads", xlsx_file_path))
         # print("done.")
         return response

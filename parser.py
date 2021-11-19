@@ -94,7 +94,7 @@ class PDFParser:
 
         while page < total_pages:
             pdf_page = pdf[page]
-            print(pdf_page)
+            # print(pdf_page)
 
             company_name = PDFParser._extract_pattern(pdf_page, cls.company_name)
 
@@ -107,7 +107,7 @@ class PDFParser:
             debtors_name = PDFParser._extract_pattern(pdf_page, cls.debtors_name_pattern)
             invoice_amount = PDFParser._extract_pattern(pdf_page, cls.invoice_amount_pattern)
 
-            print(str(page+1) + ": ", company_name, "\t", inv_no, "\t", po_no, "\t", debtors_name, "\t", invoice_amount)
+            # print(str(page+1) + ": ", company_name, "\t", inv_no, "\t", po_no, "\t", debtors_name, "\t", invoice_amount)
 
             if inv_no:
                 if not invoice_amount:
@@ -126,7 +126,7 @@ class PDFParser:
     @staticmethod
     def _extract_pattern(pdf_page: str, pattern: str) -> str:
         if match := re.search(pattern, pdf_page, re.MULTILINE):
-            print(match.groups())
+            # print(match.groups())
             return match.group(2)
         return ""
 

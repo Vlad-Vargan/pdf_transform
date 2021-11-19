@@ -16,34 +16,34 @@
     <title>File Upload</title>
   </head>
   <body>
-    <h1 class="text-center">Millhouse document parser</h1>
+    <h1 class="text-center" style="margin-top: 80px">
+      Millhouse document parser
+    </h1>
     <h2 class="text-center">📄 PDF ➡️ XLSX 🧾</h2>
 
-    <div class="container">
+    <div class="container" style="margin-top: 80px; margin-bottom: 80px">
       <div class="row">
         <h3>Загрузите файл</h3>
       </div>
       <div class="row">
         <form method="POST" action="" enctype="multipart/form-data">
-          <p>
-            <input
-              id="inputFile"
-              class="form-control form-control-lg"
-              type="file"
-              name="file"
-              accept=".pdf"
-            />
-            <label for="inputFile" class="form-label"
-              >Документ не должен превышать 300 МB</label
-            >
-          </p>
-          <p>
-            <input
-              class="btn btn-primary btn-lg"
-              type="submit"
-              value="Отправить"
-            />
-          </p>
+          <input
+            id="inputFile"
+            class="form-control form-control-lg"
+            type="file"
+            name="file"
+            accept=".pdf"
+            width="100%"
+          />
+          <label for="inputFile" class="form-label"
+            >Размер документа не должен превышать 300 МB</label
+          >
+          <br />
+          <input
+            class="btn btn-primary btn-lg"
+            type="submit"
+            value="Отправить"
+          />
         </form>
       </div>
     </div>

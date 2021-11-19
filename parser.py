@@ -94,6 +94,7 @@ class PDFParser:
 
         while page < total_pages:
             pdf_page = pdf[page]
+            print(pdf_page)
 
             company_name = PDFParser._extract_pattern(pdf_page, cls.company_name)
 
@@ -124,6 +125,7 @@ class PDFParser:
     @staticmethod
     def _extract_pattern(pdf_page: str, pattern: str) -> str:
         if match := re.search(pattern, pdf_page, re.MULTILINE):
+            print(match.groups())
             return match.group(2)
         return ""
 

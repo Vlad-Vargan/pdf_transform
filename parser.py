@@ -78,7 +78,7 @@ class PDFParser:
 
     company_name = r"^((C\/O Orange Commercial Credit))$"
 
-    invoice_number_pattern = r"(Invoice\sNumber\s(\d{6}-\d-\w)\sPrint\sDate)"
+    invoice_number_pattern = r"(Invoice Number\s*(\d{6}-\d-\w)\sPrint\sDate)"
     ref_number_pattern = r"(REF #1: ([a-zA-Z0-9-./ ]{1,25}))"
     debtors_name_pattern = r"(Bill To: ([-\w/() ]*))"
     invoice_amount_pattern = r"(Total Charges: \$ US\s*((\d{1,3}|\d{1},\d{3})\.\d{2}))$"

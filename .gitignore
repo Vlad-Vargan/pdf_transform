@@ -129,6 +129,5 @@ dmypy.json
 .pyre/
 
 .vscode/*
-uploads/*.pdf
-uploads/*.xlsx
+uploads/*
 .DS_Store

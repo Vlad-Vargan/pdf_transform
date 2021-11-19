@@ -12,7 +12,6 @@ from parser import ExcelConverter
 
 app = Flask(__name__, template_folder="templates")
 # app.config['MAX_CONTENT_LENGTH'] = 300 * 1024 * 1024 # will secure the request body size
-print(app.config['MAX_CONTENT_LENGTH'])
 app.config['UPLOAD_EXTENSIONS'] = ['.pdf']
 app.config['UPLOAD_PATH'] = 'uploads'
 
@@ -33,7 +32,7 @@ def upload_files():
     now = datetime.now()
     date_time_filename = now.strftime("%m_%d_%Y-%H%M%S-") + uploaded_file.filename
     filename = secure_filename(date_time_filename)
-    print(filename)
+
     if filename != '':
         file_ext = os.path.splitext(filename)[1]
         if file_ext not in app.config['UPLOAD_EXTENSIONS']:
@@ -46,11 +45,13 @@ def upload_files():
         except pdftotext.Error as e:
             return "Failed to open pdf file", 400
         os.remove(upload_path)
-        xlsx_file_path = ExcelConverter.convert(data, filename)
-        # print(xlsx_file_path)
+        if not data:
+            return send_from_directory("xlsx", "empty.xlsx")
 
-        response = send_from_directory(app.config['UPLOAD_PATH'], xlsx_file_path)
+        xlsx_file_path = ExcelConverter.convert(data, filename)
+
+        response = send_from_directory("xlsx", xlsx_file_path)
         # print("file sent, deleting...")
-        os.remove(os.path.join(app.config['UPLOAD_PATH'], xlsx_file_path))
+        os.remove(os.path.join("xlsx", xlsx_file_path))
         # print("done.")
         return response

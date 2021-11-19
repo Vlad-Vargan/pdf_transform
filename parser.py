@@ -11,7 +11,7 @@ class ExcelConverter:
 
     init_row = 9
     col_range = ("B", "C", "D", "E")
-    template_path = "template.xlsx"
+    template_path = "xlsx/template.xlsx"
 
     @classmethod
     def convert(cls, data: List[Tuple], filename: str) -> str:

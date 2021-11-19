@@ -78,10 +78,10 @@ class PDFParser:
 
     company_name = r"^((C\/O Orange Commercial Credit))$"
 
-    invoice_number_pattern = r"^(Invoice\sNumber\s(\d{6}-\d-\w)\sPrint\sDate)$"
-    ref_number_pattern = r"^(REF #1: ([a-zA-Z0-9-./ ]{1,25}))$"
-    debtors_name_pattern = r"^(Bill To: ([-\w/() ]*))$"
-    invoice_amount_pattern = r"^(Total Charges: \$ US\s*((\d{1,3}|\d{1},\d{3})\.\d{2}))$"
+    invoice_number_pattern = r"(Invoice\sNumber\s(\d{6}-\d-\w)\sPrint\sDate)"
+    ref_number_pattern = r"(REF #1: ([a-zA-Z0-9-./ ]{1,25}))"
+    debtors_name_pattern = r"(Bill To: ([-\w/() ]*))"
+    invoice_amount_pattern = r"(Total Charges: \$ US\s*((\d{1,3}|\d{1},\d{3})\.\d{2}))$"
 
     @classmethod
     def parse(cls, filename: str) -> str:
@@ -119,6 +119,7 @@ class PDFParser:
                 data.append(values)
 
             page += 1
+            break
 
         return data
 
@@ -131,5 +132,5 @@ class PDFParser:
 
 
 if __name__ == '__main__':
-    data = PDFParser.parse("uploads/big_name.pdf")
-    ExcelConverter.convert(data)
+    data = PDFParser.parse("uploads/small_name.pdf")
+    ExcelConverter.convert(data, "example.pdf")

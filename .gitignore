@@ -130,4 +130,5 @@ dmypy.json
 
 .vscode/*
 uploads/*.pdf
+uploads/*.xlsx
 .DS_Store

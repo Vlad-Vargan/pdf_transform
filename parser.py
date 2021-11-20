@@ -33,7 +33,7 @@ class ExcelConverter:
 
         cls._merge_table(start_row=table_end)
 
-        cls.ws.delete_rows(table_end+14, amount=500)
+        cls.ws.delete_rows(table_end+15, amount=500)
 
         # Save the file
         save_path = filename.replace(".pdf", ".xlsx")
@@ -51,7 +51,7 @@ class ExcelConverter:
         ws.merge_cells(start_row=eight, start_column=1, end_row=eight, end_column=5)
         nine = start_row + 9
         ws.merge_cells(start_row=nine, start_column=1, end_row=nine, end_column=3)
-        for row in range(start_row + 10, start_row + 16):
+        for row in range(start_row + 10, start_row + 15):
             ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=2)
         ws.merge_cells(start_row=start_row + 11, start_column=4, end_row=start_row + 13, end_column=5)
         ws[f"E{start_row}"] = f"=SUM(E{cls.init_row}:E{start_row-1})"
